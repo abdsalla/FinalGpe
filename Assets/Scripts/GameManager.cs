@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;  // GameManager creation
 
+    public PlayerState playerState;
     public bool playerIsAlive; 
     public int lives;
     public float score;
@@ -58,7 +59,6 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(tPrefab, pos, Quaternion.identity);
         }
-
     }
 	
 	// Update is called once per frame
@@ -74,7 +74,21 @@ public class GameManager : MonoBehaviour
             playerIsAlive = true;
             lives -= 1;
         }
-	}
+
+        switch (playerState)
+        {
+            case PlayerState.DEFAULT:
+                DisablePainter();
+                break;
+            case PlayerState.PAINT:
+                EnablePainter();
+                break;
+            default:
+                break;
+        }
+
+
+    }
 
     public void OnGameOver()
     {
@@ -90,5 +104,21 @@ public class GameManager : MonoBehaviour
     public void OnVictory()
     {
         SceneManager.LoadScene("Victory");
+    }
+
+    public void EnablePainter()
+    {
+
+    }
+
+    public void DisablePainter()
+    {
+
+    }
+
+    public enum PlayerState
+    {
+        PAINT,
+        DEFAULT
     }
 }
