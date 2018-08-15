@@ -18,7 +18,11 @@ public class Hazards : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+
             Destroy(collision.gameObject);
+            GameManager.instance.score -= 100;
+            GameManager.instance.UpdateScore();
+            GameManager.instance.playerState = GameManager.PlayerState.DEFAULT;
             GameManager.instance.playerIsAlive = false;
         }
     }

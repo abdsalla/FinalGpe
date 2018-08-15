@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Environment
+  - RedPainterBlock
+  - BluePainterBlock
+  - GreenPainterBlock
+  - GreenPaintBall
+  - RedPaintBall
+  - BluePaintBall
   layers:
   - Default
   - TransparentFX

@@ -51,18 +51,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8eeedeb6d9414746866961c1b7733eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerState: 1
+  player: {fileID: 1465106405809848, guid: e5c0786b8ad4ac5479a6df59242ba40e, type: 2}
   playerIsAlive: 0
   lives: 3
   score: 0
+  scoreText: {fileID: 0}
   trampolines:
-  - {fileID: 0}
+  - {fileID: 1752628182495270, guid: e597e58cb9d0f1e4381fb546fd3b8d65, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   hazards:
+  - {fileID: 1330217934030834, guid: 440ae1269803f5d4cb438531e3887e47, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  powerUps:
+  - {fileID: 1069889548691800, guid: abdf1365ec40da5438f3cbbd3caf8653, type: 2}
+  goal:
   - {fileID: 0}
   hSpawnPoints:
   - {x: -6.06, y: -2.91, z: 0}
@@ -74,7 +81,13 @@ MonoBehaviour:
   - {x: -1.55, y: 1.57, z: 0}
   - {x: -4.15, y: -1, z: 0}
   - {x: 6.11, y: -3.52, z: 0}
-  hPrefab: {fileID: 4758173295585094, guid: 440ae1269803f5d4cb438531e3887e47, type: 2}
-  tPrefab: {fileID: 4470332738593806, guid: e597e58cb9d0f1e4381fb546fd3b8d65, type: 2}
-  pPrefab: {fileID: 4886536657209184, guid: e5c0786b8ad4ac5479a6df59242ba40e, type: 2}
+  pUSpawnPoints:
+  - {x: 6.071399, y: -1.780126, z: 0}
+  gSpawnPoints:
+  - {x: 23.59, y: -1.96, z: 0}
+  hPrefab: {fileID: 1330217934030834, guid: 440ae1269803f5d4cb438531e3887e47, type: 2}
+  tPrefab: {fileID: 1752628182495270, guid: e597e58cb9d0f1e4381fb546fd3b8d65, type: 2}
+  pPrefab: {fileID: 1465106405809848, guid: e5c0786b8ad4ac5479a6df59242ba40e, type: 2}
+  pUPrefab: {fileID: 1998076374839490, guid: b4c74aa13c3c12b4dac99ea112103cc7, type: 2}
+  gPrefab: {fileID: 1069889548691800, guid: abdf1365ec40da5438f3cbbd3caf8653, type: 2}
   checkPoint: {x: 0, y: 0, z: 0}

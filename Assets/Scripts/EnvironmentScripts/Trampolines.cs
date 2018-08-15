@@ -34,6 +34,7 @@ public class Trampolines : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            pM = collision.gameObject.GetComponent<PlayerMove>();
             pM.jumpForce = 350;
         }
     }

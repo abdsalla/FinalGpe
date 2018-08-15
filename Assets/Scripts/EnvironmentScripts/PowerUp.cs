@@ -18,6 +18,8 @@ public class PowerUp : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            GameManager.instance.score += 50;
+            GameManager.instance.UpdateScore();
             GameManager.instance.playerState = GameManager.PlayerState.PAINT;
             Destroy(this.gameObject);
         }

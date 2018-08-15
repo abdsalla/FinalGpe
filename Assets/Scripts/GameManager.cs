@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,22 +9,31 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;  // GameManager creation
 
+
     public PlayerState playerState;
+    public GameObject player;
     public bool playerIsAlive; 
     public int lives;
     public float score;
+    public Text scoreText;
     public List<Trampolines> trampolines;
     public List<Hazards> hazards;
+    public List<PowerUp> powerUps;
+    public List<Goal> goal;
     public List<Vector3> hSpawnPoints;
     public List<Vector3> tSpawnPoints;
-    public Transform hPrefab;
-    public Transform tPrefab;
-    public Transform pPrefab;
+    public List<Vector3> pUSpawnPoints;
+    public List<Vector3> gSpawnPoints;
+    public GameObject hPrefab;
+    public GameObject tPrefab;
+    public GameObject pPrefab;
+    public GameObject pUPrefab;
+    public GameObject gPrefab;
 
 
     [HideInInspector]
     public Vector3 checkPoint;
-    private int randint;
+    
 
 
     void Awake()
@@ -43,12 +53,17 @@ public class GameManager : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-        {
-            checkPoint.Set(-9, -3, 0);  // first checkpoint
-            Instantiate(pPrefab, checkPoint, Quaternion.identity);   // Instanting the player
-            playerIsAlive = true; 
+        //{
 
-        }
+            score = 0;
+            UpdateScore();
+           // checkPoint.Set(4, -3, 0);
+            checkPoint.Set(-9, -3, 0);  // first checkpoint
+            Instantiate(pPrefab, checkPoint, Quaternion.identity);   // Instantiatng the player
+            playerIsAlive = true;
+            //player = GameObject.FindGameObjectWithTag("Player");
+            this.player = GameObject.FindWithTag("Player");
+       // }
         
         // spawning traps and tramps
        foreach (Vector3 pos in hSpawnPoints)
@@ -59,6 +74,14 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(tPrefab, pos, Quaternion.identity);
         }
+        foreach (Vector3 pos in pUSpawnPoints)
+        {
+            Instantiate(pUPrefab, pos, Quaternion.identity);
+        }
+        foreach (Vector3 pos in gSpawnPoints)
+        {
+            Instantiate(gPrefab, pos, Quaternion.identity);
+        }
     }
 	
 	// Update is called once per frame
@@ -68,10 +91,12 @@ public class GameManager : MonoBehaviour
             OnGameOver(); // points to the gameover scene
         }
 
-        if (playerIsAlive == false)
+        if (player == null) //playerIsAlive == null;
         {
             Instantiate(pPrefab, checkPoint, Quaternion.identity);
+            this.player = GameObject.FindWithTag("Player");
             playerIsAlive = true;
+            Instantiate(pUPrefab, pUSpawnPoints[0], Quaternion.identity);
             lives -= 1;
         }
 
@@ -86,14 +111,15 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-
-
     }
 
     public void OnGameOver()
     {
-        Debug.Log("You Lose");
-        SceneManager.LoadScene("GameOver");
+        
+        lives = 3;
+        SceneManager.LoadScene(2);
+        playerIsAlive = false;
+        Restart();
     }
 
     public void StartLevel()
@@ -108,7 +134,10 @@ public class GameManager : MonoBehaviour
 
     public void EnablePainter()
     {
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
 
+        }
     }
 
     public void DisablePainter()
@@ -120,5 +149,26 @@ public class GameManager : MonoBehaviour
     {
         PAINT,
         DEFAULT
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void Restart()
+    {
+        foreach (Vector3 pos in hSpawnPoints)
+        {
+            Instantiate(hPrefab, pos, Quaternion.identity);
+        }
+        foreach (Vector3 pos in tSpawnPoints)
+        {
+            Instantiate(tPrefab, pos, Quaternion.identity);
+        }
+        foreach (Vector3 pos in gSpawnPoints)
+        {
+            Instantiate(gPrefab, pos, Quaternion.identity);
+        }
     }
 }

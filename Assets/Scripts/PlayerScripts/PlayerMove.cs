@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour {
     public float jumpForce;
     public bool isGrounded;
     public int jumpsLeft;
+    public JumpSound jumpsound;
 
     private Rigidbody2D thisRigidbody2D;
     private SpriteRenderer mySR;
@@ -83,15 +84,15 @@ public class PlayerMove : MonoBehaviour {
             Jump();
         }
 
-        Debug.Log(hitInfo.collider.gameObject.tag);
-        if (hitInfo.collider.tag == "Environment")
+        //Debug.Log(hitInfo.collider.gameObject.tag);
+        if (hitInfo.collider.tag == "Environment" || hitInfo.collider.tag == "BluePainterBlock" || hitInfo.collider.tag == "RedPainterBlock" || hitInfo.collider.tag == "GreenPainterBlock")
         {
-            Debug.Log("touching box");
+            
             isGrounded = true;
         }
         else
         {
-            Debug.Log("In air");
+            
             isGrounded = false;
         }
     }
@@ -103,6 +104,7 @@ public class PlayerMove : MonoBehaviour {
         if (isGrounded == true)
         {
             thisRigidbody2D.AddForce(transform.up * jumpForce, ForceMode2D.Force);
+            jumpsound.PlayJump();
             isGrounded = false;
         }
     }
