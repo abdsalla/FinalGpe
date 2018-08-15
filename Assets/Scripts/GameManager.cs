@@ -86,7 +86,11 @@ public class GameManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (lives == 0)
+
+        this.scoreText = GameObject.Find("Score").GetComponent<Text>();
+
+
+        if (lives == 0)
         {
             OnGameOver(); // points to the gameover scene
         }
