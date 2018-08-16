@@ -21,6 +21,7 @@ public class Hazards : MonoBehaviour {
 
             Destroy(collision.gameObject);
             GameManager.instance.score -= 100;
+            GameManager.instance.lives -= 1;
             GameManager.instance.UpdateScore();
             GameManager.instance.playerState = GameManager.PlayerState.DEFAULT;
             GameManager.instance.playerIsAlive = false;

@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 577541258}
   - component: {fileID: 577541257}
   - component: {fileID: 577541256}
+  - component: {fileID: 577541259}
   m_Layer: 5
   m_Name: Play Game
   m_TagString: Untagged
@@ -490,7 +491,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &577541257
@@ -526,6 +527,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 577541254}
+--- !u!114 &577541259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577541254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd11d3c074dce3345aedce96d596e9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 577541256}
+  quitButton: {fileID: 531180674}
 --- !u!1 &964617942
 GameObject:
   m_ObjectHideFlags: 0

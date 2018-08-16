@@ -15,9 +15,10 @@ public class SceneLoaders : MonoBehaviour {
     }
 
     void Start()
-    {      
-        startButton = startButton.GetComponent<Button>();
-        quitButton = quitButton.GetComponent<Button>();
+    {
+        // startButton = startButton.GetComponent<Button>();
+       // startButton.name = "Play Game";
+        //quitButton = quitButton.GetComponent<Button>();
     }
 
 
